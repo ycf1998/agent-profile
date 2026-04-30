@@ -1,0 +1,10 @@
+.idea
+
+dist/
+node_modules/
+*.log
+*.tgz
+out/
+
+.claude
+.personal/
