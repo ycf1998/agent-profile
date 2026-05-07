@@ -186,7 +186,7 @@ function printStatusResult(result: {
   printTitle('Agent Profile Status');
   console.log(`Profile: ${result.profile ?? '(无)'}`);
   console.log(`Repo:    ${result.repoRoot}`);
-  console.log(`Claude:  ${result.rootPath}`);
+  console.log(`Agent:  ${result.rootPath}`);
   console.log();
   if (result.managedCount === 0) {
     console.log('当前没有任何已托管项');
@@ -228,7 +228,7 @@ function printStatusResult(result: {
 
 async function main(): Promise<void> {
   const program = applyChineseHelp(new Command());
-  program.name('agent-profile').description('Claude Code 本地配置资产挂载工具');
+  program.name('agent-profile').description('本地 Agent 配置资产挂载管理工具');
   program.addHelpCommand('help [command]', '显示命令帮助');
 
   applyChineseHelp(
@@ -268,7 +268,7 @@ async function main(): Promise<void> {
   applyChineseHelp(
     program
     .command('sync')
-    .description('将当前激活仓库中的资产挂载到 Claude 目录')
+    .description('将当前激活仓库中的资产挂载到 Agent 目录')
     .option('--profile <name>')
     .option('--rebuild', '先清理当前托管项，再重新同步')
     .option('--dry-run', '仅预览同步结果，不实际写入')

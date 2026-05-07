@@ -48,7 +48,7 @@ async function seedConfig(repoRoot: string, targetRoot: string, extra = ''): Pro
     `[dirs]
 skills
 
-[claude]
+[target]
 root=${targetRoot}
 
 ${extra}`.trim() + '\n',
@@ -127,7 +127,7 @@ async function testEmptyDirsMeansCleanupOnly(): Promise<void> {
   const { repoRoot, targetRoot } = await makeRepo();
   await writeFile(
     path.join(repoRoot, 'agent-profile.conf'),
-    `[claude]
+    `[target]
 root=${targetRoot}
 `,
   );

@@ -2,7 +2,7 @@
 
 家里、公司、甚至网吧，你亲手编写的 `skills`、`agents`、`hooks`、`rules` 散落在各处。
 
-`agent-profile` 把这些配置资产收拢到一个 Git 仓库，一条命令挂载到本地 `~/.claude`。换台电脑拉下仓库执行同步，一处保存处处生效。
+`agent-profile` 把这些配置资产收拢到一个 Git 仓库，一条命令挂载到本地 Agent 目录（默认 `~/.claude`）。换台电脑拉下仓库执行同步，一处保存处处生效。
 
 - 通过软链接挂载，不覆盖非托管内容
 - 支持按场景切换 profile（工作/家庭/不同项目）
@@ -137,7 +137,7 @@ plugins
 [exclude]
 skills/*-workspace
 
-[claude]
+[target]
 root=C:\Users\you\.claude
 ```
 
@@ -146,7 +146,7 @@ root=C:\Users\you\.claude
 - `[profile]`：当前默认 profile，可为空
 - `[dirs]`：参与同步的一级目录，工具严格按这里执行
 - `[exclude]`：排除规则，匹配相对路径
-- `[claude].root`：覆盖默认目标目录；未配置时默认使用 `~/.claude`
+- `[target].root`：覆盖默认目标目录；未配置时默认使用 `~/.claude`
 
 只有 `[dirs]` 中声明的目录才会参与同步。你可以在仓库里放其他内容一起管理，但只要不在 `[dirs]` 中，就不会被挂载。
 

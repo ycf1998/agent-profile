@@ -8,7 +8,7 @@ import type { RepoConfig } from '../models/types';
 export const CONFIG_FILE = 'agent-profile.conf';
 export const STATE_FILE = 'sync-state';
 
-function defaultClaudeRoot(): string {
+function defaultTargetRoot(): string {
   return path.join(os.homedir(), '.claude');
 }
 
@@ -26,10 +26,10 @@ export async function loadRepoConfig(repoRoot: string): Promise<RepoConfig> {
   const dirLines = parsed.sections.get('dirs') ?? [];
   const excludeLines = parsed.sections.get('exclude') ?? [];
   const defaultProfile = profileLines[0] ?? null;
-  const claudeSection = parsed.keyedSections.get('claude') ?? {};
-  const rootPath = claudeSection.root
-    ? path.resolve(repoRoot, claudeSection.root)
-    : defaultClaudeRoot();
+  const targetSection = parsed.keyedSections.get('target') ?? {};
+  const rootPath = targetSection.root
+    ? path.resolve(repoRoot, targetSection.root)
+    : defaultTargetRoot();
 
   return {
     defaultProfile,
